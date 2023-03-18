@@ -182,7 +182,7 @@
           <button data-name="LARGE_UP_MAIN_NAV_TRIGGER" class="hidden weight-semi large-up-block text-1 color-charcoal padding-right-small" type="button">
             Courses
           </button>
-          <nav id="courses_nav" onmouseover="coursesMouseOver()" class="main-nav-dropdown js-main-nav-dropdown">
+          <nav id="courses_nav" onmouseover="coursesMouseOver()" onmouseout="coursesMouseOut()" class="main-nav-dropdown js-main-nav-dropdown">
   <div class="main-nav-dropdown__index">
   <div class="main-nav-dropdown__header large-up-hidden">
     <h2 class="main-nav-dropdown__header-brand icon-lettermark-charcoal">Class Central</h2>
@@ -5074,12 +5074,21 @@
   <script src="https://www.classcentral.com/webpack/4826.ea570b7100e8c5e53e11.js" defer />
   <script src="https://www.classcentral.com/webpack/Misc.a66f8a686e276f997313.js" defer />
   <script src="https://www.classcentral.com/webpack/messages-intl-icu-en-yml.64477e124174f9d771be.js" defer />
-  <script>
+  <script defer>
     function coursesMouseOver(){
       console.log("executed");
-      document.getElementById('courses_nav').classList.toggle('is-open');
-      document.getElementById('blanket').classList.toggle('animate-fade-entered');
+      document.getElementById('courses_nav').classList.add('is-open');
+      document.getElementById('blanket').classList.remove('animate-fade-hidden');
+      document.getElementById('blanket').classList.add('animate-fade-entered');
       document.getElementsByTagName('html').classList.add('nav-open');
+    }
+    
+    function coursesMouseOut(){
+      console.log("executed");
+      document.getElementById('courses_nav').classList.remove('is-open');
+      document.getElementById('blanket').classList.remove('animate-fade-entered');
+      document.getElementById('blanket').classList.add('animate-fade-hidden');
+      document.getElementsByTagName('html').classList.remove('nav-open');
     }
   </script>
   <noscript><p><img alt="Clicky" width="1" height="1" src="https://in.getclicky.com/100717250ns.gif" /></p></noscript>
